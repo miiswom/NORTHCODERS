@@ -1,0 +1,17 @@
+1. What is a shell?
+--- A shell is an interpreter between the user and the program running the computer (kernel).
+
+2. How do you write the output of a command to a file?
+--- Syntax: echo "you text" > yourFile.txt
+
+3. How do you append to the end of a file?
+--- Syntax: echo "your text" >> yourFile.txt
+
+4. How do you define a variable?
+--- Syntax: yourVariable=yourValue
+
+5. How you reference a variable in a shell script, e.g. if you wanted to print the value of the variable?
+--- echo $yourVariable (to delete it: unset yourVariable)
+
+6. How do you delete a file?
+--- rm -rf yourFile.txt
