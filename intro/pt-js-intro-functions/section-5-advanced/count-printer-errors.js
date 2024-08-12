@@ -1,4 +1,4 @@
-const { check, runTest } = require("../test-api/index");
+const { check, runTest, skipTest } = require("../test-api/index");
 /*
 In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which are named with letters from a to m.
 
@@ -21,9 +21,22 @@ countPrinterErrors(control) should return "8/22"
 
  */
 
-function countPrinterErrors() {
+function countPrinterErrors(str) {
   // your solution here
+  let unvalid = /([^a-m]){1}/gmi
+  //let count = 0;
+  let newArr = []
+  
+  for(let i=0; i < str.length ; i++) {
+    if(unvalid.test(str[i]) || (unvalid.test(str[i]) && newArr.includes(str[i]))) {
+      newArr.push(str[i])
+    }
+    
+  }
+  return `${newArr.length}/${str.length}`
 }
+
+console.log(countPrinterErrors("aaaxbbbbyyhwawiwjjjwwm"))
 
 runTest("countPrinterErrors() should return a string", function () {
   check(typeof countPrinterErrors("")).isEqualTo("string");

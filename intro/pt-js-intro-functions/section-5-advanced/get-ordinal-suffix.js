@@ -11,6 +11,21 @@ See here for more details: https://www.grammarly.com/blog/how-to-write-ordinal-n
 
 function getOrdinalSuffix(num) {
   // your solution here
+  // 1st || 21st ...
+  if(num === 1 || String(num).endsWith("1")) {
+    return "st"
+  }
+  // 2nd || 22nd ...
+  else if(num === 2 || String(num).endsWith("2")) {
+    return "nd"
+  }
+  // 3rd || 23rd ...
+  else if(num === 3 || String(num).endsWith("3")) {
+    return "rd"
+  } else {
+    return "th"
+  }
+  // from 4th - 20th inclusive
 }
 
 runTest("getOrdinalSuffix() returns 'st' when given 1", function () {

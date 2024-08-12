@@ -1,8 +1,9 @@
 const { check, runTest, skipTest } = require("../test-api/index.js");
 
 //Exercise 1
-function countProperties() {
+function countProperties(obj) {
   // This function should take an object as its argument and return the total number of properties it contains
+  return Object.keys(obj).length;
 }
 
 runTest(
@@ -17,18 +18,19 @@ runTest(
 );
 
 //Exercise 2
-function isEmptyArray() {
+function isEmptyArray(arr) {
   // This function should take an array as an argument and return true if the array is empty, and false otherwise
+  return arr.length === 0 ? true : false;
 }
 
-skipTest("isEmptyArray() checks if an array is empty", function () {
+runTest("isEmptyArray() checks if an array is empty", function () {
   check(isEmptyArray([])).isEqualTo(true);
   check(isEmptyArray(["a", "b", "c", "d"])).isEqualTo(false);
   check(isEmptyArray(["a"])).isEqualTo(false);
 });
 
 //Exercise 3
-function createProfileDescription() {
+function createProfileDescription(obj) {
   /*
   This function should take an object representing a person and information about whether they like to code
 
@@ -47,9 +49,13 @@ function createProfileDescription() {
   This is a good use case for String Template Literals:
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
   */
+
+  return obj.likesToCode === true ? 
+  `My name is ${obj.name} and I like to code.` :
+  `My name is ${obj.name} and I don't like to code.`
 }
 
-skipTest(
+runTest(
   "createProfileDescription() will create a sentence about a whether a person likes to code or not",
   function () {
     check(
@@ -62,13 +68,21 @@ skipTest(
 );
 
 // Exercise 4
-function readTrafficLight() {
+function readTrafficLight(str) {
   // This function should take a string representing a traffic light colour as an argument
   // It will be one of "red", "green" or "amber" in either uppercase or lowercase
   // You should return a corresponding message
+  lowerCaseStr = str.toLowerCase()
+  if(lowerCaseStr === "green") {
+    return "GO!"
+  } else if(lowerCaseStr === "amber") {
+    return "GET READY..."
+  } else if (lowerCaseStr === "red") {
+    return "STOP!"
+  }
 }
 
-skipTest(
+runTest(
   "readTrafficLight() should print a message according to the different colour passed in",
   function () {
     check(readTrafficLight("green")).isEqualTo("GO!");
@@ -83,12 +97,14 @@ skipTest(
 );
 
 //Exercise 5
-function howManyArguments() {
+function howManyArguments(...arg) {
   // This function should take any number of arguments and return the number of arguments passed into the function
   // HINT: For this one you should look up 'rest parameters' online - MDN Web Docs and devdocs are excellent sources of JavaScript documentation
+  let newArr = [...arg]
+  return newArr.length
 }
 
-skipTest(
+runTest(
   "howManyArguments() returns the number of items passed on a single call",
   function () {
     check(howManyArguments("a", "b", "c")).isEqualTo(3);
@@ -101,7 +117,7 @@ skipTest(
 );
 
 //Exercise 6
-function updateCoinMachine() {
+function updateCoinMachine(obj, coin) {
   /*
   This function should take an object representing a coin machine and a string representing a coin as its arguments
   A coinMachine object will take this form:
@@ -113,9 +129,19 @@ function updateCoinMachine() {
   }
   You should 'add the provided coin to the machine' by altering the associated property and return the updated coinMachine
   */
+ for(key in obj) {
+  if(key === coin) {
+    let coinVal = coin.split("")
+                      .map((e) => +e )
+                      .filter((e) => e > 0)
+                      .join("")
+    
+    obj[key]++;
+  }
+ } return obj
 }
 
-skipTest(
+runTest(
   "updateCoinMachine() will create a message from an details object",
   function () {
     check(
@@ -157,18 +183,34 @@ skipTest(
 );
 
 //Exercise 7
-function updatePosition() {
+function updatePosition(arr, str) {
+  lowerCaseStr = str.toLowerCase()
   /*
   This function should take an array representing coordinates - an x position and a y position - and a string representing a direction, and it should return a new pair of coordinates, with the coords array updated by moving either x or y 1 unit in a particular direction
 
-  If direction is "up" it should move 1 unit up (+ 1 in the y direction)
-  If the direction is "down" it should move 1 unit down (- 1 in the y direction)
-  If the direction is "right" it should move 1 unit right (+ 1 in the x direction)
-  If the direction is "left" it should move 1 unit left (- 1 in the x direction)
+  x accept left & righ
+  y accept up and down
   */
+  //If direction is "up" it should move 1 unit up (+ 1 in the y direction)
+  if(lowerCaseStr === "up") {
+    arr[1]++
+  }
+  //If the direction is "down" it should move 1 unit down (- 1 in the y direction)
+  else if(lowerCaseStr === "down") {
+    arr[1]--
+  }
+  //If the direction is "right" it should move 1 unit right (+ 1 in the x direction)
+  else if(lowerCaseStr === "right") {
+    arr[0]++
+  }
+  //If the direction is "left" it should move 1 unit left (- 1 in the x direction)
+  else if(lowerCaseStr === "left") {
+    arr[0]--
+  }
+  return arr
 }
 
-skipTest("updatePosition() updates a co-ordinates array", function () {
+runTest("updatePosition() updates a co-ordinates array", function () {
   check(updatePosition([10, 10], "up")).isEqualTo([10, 11]);
   check(updatePosition([0, 0], "down")).isEqualTo([0, -1]);
   check(updatePosition([3, 3], "left")).isEqualTo([2, 3]);
@@ -176,11 +218,12 @@ skipTest("updatePosition() updates a co-ordinates array", function () {
 });
 
 // Exercise 8
-function isFalsy() {
+function isFalsy(val) {
   // This function should take any value as an argument, and return true if it is falsy, and false otherwise
+  return !val ? true : false;
 }
 
-skipTest(
+runTest(
   "isFalsy() returns true if a value is falsy and false if it is truthy",
   function () {
     check(isFalsy(false)).isEqualTo(true);
@@ -194,15 +237,16 @@ skipTest(
 );
 
 // Exercise 9
-function checkGame() {
+function checkGame(num, str) {
   // This function should take a number representing a dice roll and a string repesenting a coin toss as its arguments
   // A dice roll will be a number between 1 and 6
   // A coin toss will be "H" or "T" representing heads or tails
   // The game is considered to be won if the dice roll is 3 or higher AND the coin toss is "H"
+  return num >= 3 && str === "H" ? true : false;
   // You should return true if the game has been won, and false otherwise
 }
 
-skipTest("checkGame() should check if a user was won the game", function () {
+runTest("checkGame() should check if a user was won the game", function () {
   check(checkGame(3, "H")).isEqualTo(true);
   check(checkGame(4, "H")).isEqualTo(true);
   check(checkGame(5, "H")).isEqualTo(true);
@@ -211,7 +255,7 @@ skipTest("checkGame() should check if a user was won the game", function () {
 });
 
 //Exercise 10
-function addCoins() {
+function addCoins(arr, str) {
   /*
   In this function, a "coin collection" is represented by an array containing 4 other nested arrays, each representing a slot in the collection in the following way:
    1p   2p   5p   10p
@@ -219,9 +263,18 @@ function addCoins() {
 
   This should take two arguments, a coin collection array and a string representing a coin, and return an updated version of the given array with the coin added at the appropriate position
   */
+ if(str === "1p") {
+  arr[0].push(str)
+ } else if(str === "2p") {
+  arr[1].push(str)
+ } else if(str === "5p") {
+  arr[2].push(str)
+ } else if(str === "10p") {
+  arr[3].push(str)
+ } return arr
 }
 
-skipTest("addCoins() will update the coins in a given slot", function () {
+runTest("addCoins() will update the coins in a given slot", function () {
   check(addCoins([[], [], [], []], "1p")).isEqualTo([["1p"], [], [], []]);
   check(addCoins([[], [], [], []], "2p")).isEqualTo([[], ["2p"], [], []]);
   check(addCoins([[], ["2p"], [], []], "2p")).isEqualTo([
