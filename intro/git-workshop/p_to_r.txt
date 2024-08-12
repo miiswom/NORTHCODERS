@@ -1,3 +1,5 @@
+command: egrep "^[p-r]" file.txt
+
 pa
 paal
 paar

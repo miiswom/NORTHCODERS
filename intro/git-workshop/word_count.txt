@@ -1,1 +1,3 @@
+command: echo -n file | wc -c
+
 235886

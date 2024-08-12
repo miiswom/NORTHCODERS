@@ -1,3 +1,5 @@
+command: egrep "^\w{2}$" file.txt
+
 aa
 ad
 ae

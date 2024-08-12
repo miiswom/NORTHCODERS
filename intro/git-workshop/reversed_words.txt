@@ -1,3 +1,5 @@
+command : tac file.txt
+
 Zyzzogeton
 Zyzomys
 zythum

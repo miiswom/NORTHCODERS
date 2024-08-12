@@ -1,3 +1,5 @@
+command: egrep "[a,e,i,o,u]{3,}/g" file.txt
+
 Abietineae
 abietineous
 ablatitious

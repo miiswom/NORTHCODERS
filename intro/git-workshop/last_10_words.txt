@@ -1,3 +1,5 @@
+command: tail myfile.txt
+
 zymotoxic
 zymurgy
 Zyrenian

@@ -1,3 +1,5 @@
+command: egrep "^b\w{2}$/g" file.txt
+
 baa
 bac
 bad
