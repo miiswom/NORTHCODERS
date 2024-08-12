@@ -4,81 +4,81 @@ const { check, runTest, skipTest } = require("../test-api/index.js");
 runTest("checking multiTypeArray", function () {
   const multiTypeArray = ["I am a string", 42, true, [1, 2, 3]];
 
-  check("string").isEqualTo(typeof multiTypeArray[0]);
-  check("number").isEqualTo(typeof multiTypeArray[1]);
-  check("boolean").isEqualTo(typeof multiTypeArray[2]);
-  check("object").isEqualTo(typeof multiTypeArray[3]);
+  check(FILL_ME_IN).isEqualTo(typeof multiTypeArray[0]);
+  check(FILL_ME_IN).isEqualTo(typeof multiTypeArray[1]);
+  check(FILL_ME_IN).isEqualTo(typeof multiTypeArray[2]);
+  check(FILL_ME_IN).isEqualTo(typeof multiTypeArray[3]);
 });
 
 // Exercise 2
 // once you have passed the test above, change skipTest below to runTest so you are able to run the next test
-runTest("checking alphaSample", function () {
+skipTest("checking alphaSample", function () {
   const alphaSample = ["a", "b", "c"];
   alphaSample.push("d");
   alphaSample.push("g");
 
-  check(["a", "b", "c", "d", "g"]).isEqualTo(alphaSample);
+  check(FILL_ME_IN).isEqualTo(alphaSample);
 
   const lastItem = alphaSample.pop();
 
-  check("g").isEqualTo(lastItem);
-  check(["a", "b", "c", "d"]).isEqualTo(alphaSample);
+  check(FILL_ME_IN).isEqualTo(lastItem);
+  check(FILL_ME_IN).isEqualTo(alphaSample);
 });
 
 // Exercise 3
 // once you have passed the test above, change skipTest below to runTest so you are able to run the next test
-runTest("working with nested arrays", function () {
+skipTest("working with nested arrays", function () {
   const rows = [
     ["a", "b", "c"],
     ["d", "e", "f"],
     ["g", "h", "i"],
   ];
 
-  check(["a", "b", "c"]).isEqualTo(rows[0]);
-  check(["d", "e", "f"]).isEqualTo(rows[1]);
-  check(["g", "h", "i"]).isEqualTo(rows[2]);
+  check(FILL_ME_IN).isEqualTo(rows[0]);
+  check(FILL_ME_IN).isEqualTo(rows[1]);
+  check(FILL_ME_IN).isEqualTo(rows[2]);
 
   const firstRow = rows[0];
   check(firstRow[0]).isEqualTo("a");
-  check(firstRow[1]).isEqualTo("b");
+  check(firstRow[FILL_ME_IN]).isEqualTo("b");
 
-  check(rows[1][1]).isEqualTo("e");
-  check(rows[2][0]).isEqualTo("g");
-  check(rows[0][2]).isEqualTo("c");
+  check(rows[1][FILL_ME_IN]).isEqualTo("e");
+  check(rows[2][FILL_ME_IN]).isEqualTo("g");
+  check(rows[0][FILL_ME_IN]).isEqualTo("c");
 });
 
 // Exercise 4
 // once you have passed the test above, change skipTest below to runTest so you are able to run the next test
-runTest("check object properties", function () {
+skipTest("check object properties", function () {
   const father = {
     firstName: "Michael",
     lastName: "Bluth",
     age: 33,
   };
 
-  check("Michael").isEqualTo(father.firstName);
-  check("Bluth").isEqualTo(father.lastName);
-  check(undefined).isEqualTo(father.firstname);
-  check(33).isEqualTo(father.age);
+  check(FILL_ME_IN).isEqualTo(father.firstName);
+  check(FILL_ME_IN).isEqualTo(father.lastName);
+  check(FILL_ME_IN).isEqualTo(father.firstname);
+  check(FILL_ME_IN).isEqualTo(father.age);
 });
 
 // Exercise 5
 // once you have passed the test above, change skipTest below to runTest so you are able to run the next test
-runTest("remove object properties", function () {
+skipTest("remove object properties", function () {
   const brotherInLaw = {
     name: "Tobias",
     lastname: "Funke",
     job: "therapist",
   };
 
-  check("therapist").isEqualTo(brotherInLaw.job);
+  check(FILL_ME_IN).isEqualTo(brotherInLaw.job);
   delete brotherInLaw.job;
-  check(undefined).isEqualTo(brotherInLaw.job);
+  check(FILL_ME_IN).isEqualTo(brotherInLaw.job);
 });
 
 // Exercise 6
 // once you have passed the test above, change skipTest below to runTest so you are able to run the next test
-runTest("working with nested objects", function () {
+skipTest("working with nested objects", function () {
   const bluthFamily = {
     father: {
       name: "George",
@@ -90,9 +90,9 @@ runTest("working with nested objects", function () {
     daughters: [{ name: "Lindsay" }],
   };
 
-  check("George").isEqualTo(bluthFamily.father.name);
-  check(bluthFamily.mother.name).isEqualTo("Lucille");
-  check(bluthFamily.daughters[0].name).isEqualTo("Lindsay");
+  check(FILL_ME_IN).isEqualTo(bluthFamily.father.name);
+  check(bluthFamily.mother.name).isEqualTo(FILL_ME_IN);
+  check(bluthFamily.daughters[FILL_ME_IN].FILL_ME_IN).isEqualTo("Lindsay");
 });
 
 // >>>>>>>>>>> DON'T ALTER ANYTHING BELOW THIS LINE <<<<<<<<<<<<<<<
