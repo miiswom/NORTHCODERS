@@ -2,11 +2,17 @@ function herdTheBabies(str) {
   let output = ""
 
   if (str && str.length <= 1) { output = str }
+
   else if (str.length > 1) {
-    let lowerCases = /[a-z]/;
+    let lowerCasesRegex = /[a-z]/;
+    let strArray = str.split("")
     let allParents = []
     let allChildren = []
-    str.split("").filter((e) => e.match(lowerCases) ? allChildren.push(e) : allParents.push(e)); // <--- to refactor
+    
+    strArray.forEach((char) => {
+      if (char.match(lowerCasesRegex)) { allChildren.push(char) } else { allParents.push(char) }
+    });
+
     allChildren.sort((a, b) => a > b ? 1 : -1);
     allParents.sort((a, b) => a > b ? 1 : -1)
 
@@ -18,11 +24,13 @@ function herdTheBabies(str) {
         allParentsCount[allParents[i]] = [allParents[i]]
       }
     }
+
     for (let parent in allParentsCount) {
       let firstParent = allParentsCount[parent][0]
       let currentParent = allParentsCount[parent];
       if (allChildren.includes(firstParent.toLowerCase())) {
-        allChildren.splice(allChildren.findIndex((e) => e == firstParent.toLowerCase()), 0, currentParent)
+        let firsChildIndex = allChildren.findIndex((e) => e == firstParent.toLowerCase())
+        allChildren.splice(firsChildIndex, 0, currentParent)
       }
     }
     return allChildren.length > 0 ? allChildren.flat().join("") : allParents.join("")
