@@ -21,7 +21,7 @@ function herdTheBabies(str) {
     for (let parent in allParentsCount) {
       let firstParent = allParentsCount[parent][0]
       let currentParent = allParentsCount[parent];
-      if (allChildren.includes(firstParent.toLowerCase())) { // <--- save that long ass code in a variable
+      if (allChildren.includes(firstParent.toLowerCase())) {
         allChildren.splice(allChildren.findIndex((e) => e == firstParent.toLowerCase()), 0, currentParent)
       }
     }
