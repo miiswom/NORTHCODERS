@@ -5,11 +5,11 @@ function herdTheBabies(str) {
 
   else if (str.length > 1) {
     let lowerCasesRegex = /[a-z]/;
-    let strArray = str.split("")
+    let charArr = str.split("")
     let allParents = []
     let allChildren = []
     
-    strArray.forEach((char) => {
+    charArr.forEach((char) => {
       if (char.match(lowerCasesRegex)) { allChildren.push(char) } else { allParents.push(char) }
     });
 

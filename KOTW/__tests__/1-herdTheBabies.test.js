@@ -1,4 +1,4 @@
-const herdTheBabies = require("../katas/1-heardTheBabies");
+const herdTheBabies = require("../katas/1bis-herdTheBabies");
 
 describe("herdTheBabies()", () => {
   test("if passed with a string containing a single argument, it should return that argument", () => {
