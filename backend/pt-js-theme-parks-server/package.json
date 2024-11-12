@@ -1,0 +1,36 @@
+{
+  "name": "be-pg-themeparks",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "setup-db": "psql -f ./db/reset-db.sql",
+    "seed": "PGDATABASE=theme_parks node ./db/run-seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northcoders/be-pg-themeparks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northcoders/be-pg-themeparks/issues"
+  },
+  "homepage": "https://github.com/northcoders/be-pg-themeparks#readme",
+  "description": "Tasks: https://l2c.northcoders.com/courses/js-pt-be/theme-parks-seeding",
+  "dependencies": {
+    "node-postgres": "^0.6.2",
+    "pg": "^8.13.1",
+    "pg-format": "^1.0.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-extended": "^4.0.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended/all"
+    ]
+  }
+}
